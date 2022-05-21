@@ -13,7 +13,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/c-bata/go-prompt"
+	"github.com/influxdata/go-prompt"
 )
 
 func completer(d prompt.Document) []prompt.Suggest {
