@@ -46,9 +46,9 @@ func OptionInitialBufferText(x string) Option {
 }
 
 // OptionCompletionWordSeparator to set word separators. Enable only ' ' if empty.
-func OptionCompletionWordSeparator(x string) Option {
+func OptionCompletionWordSeparator(separators ...string) Option {
 	return func(p *Prompt) error {
-		p.completion.wordSeparator = x
+		p.completion.wordSeparators = separators
 		return nil
 	}
 }

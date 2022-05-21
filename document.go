@@ -105,6 +105,18 @@ func (d *Document) GetWordBeforeCursorUntilSeparator(sep string) string {
 	return x[d.FindStartOfPreviousWordUntilSeparator(sep):]
 }
 
+// GetWordBeforeCursorUntilAnySeparator returns the text before the cursor until any separator.
+func (d *Document) GetWordBeforeCursorUntilAnySeparator(seps ...string) string {
+	w := d.TextBeforeCursor()
+	for _, sep := range seps {
+		newW := d.GetWordBeforeCursorUntilSeparator(sep)
+		if len(newW) < len(w) {
+			w = newW
+		}
+	}
+	return w
+}
+
 // GetWordAfterCursorUntilSeparator returns the text after the cursor until next separator.
 func (d *Document) GetWordAfterCursorUntilSeparator(sep string) string {
 	x := d.TextAfterCursor()

@@ -177,7 +177,7 @@ func (p *Prompt) handleCompletionKeyBinding(key Key, completing bool) {
 		p.completion.Previous()
 	default:
 		if s, ok := p.completion.GetSelectedSuggestion(); ok {
-			w := p.buf.Document().GetWordBeforeCursorUntilSeparator(p.completion.wordSeparator)
+			w := p.buf.Document().GetWordBeforeCursorUntilAnySeparator(p.completion.wordSeparators...)
 			if w != "" {
 				p.buf.DeleteBeforeCursor(len([]rune(w)))
 			}
